@@ -1177,6 +1177,7 @@ function tax_by_rate($type, $db, $y, $q, $date_start, $date_end, $modetax, $dire
 		if (!empty($conf->global->MAIN_NOT_INCLUDE_ZERO_VAT_IN_REPORTS)) {
 			$sql .= " AND (d.".$f_rate." <> 0 OR d.total_tva <> 0)";
 		}
+		$sql .= " GROUP BY d.rowid";
 		$sql .= " ORDER BY e.rowid";
 
 		if (!$sql) {
